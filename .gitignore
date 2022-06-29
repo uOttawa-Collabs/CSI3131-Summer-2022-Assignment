@@ -54,3 +54,6 @@ dkms.conf
 # Assignment specifications
 *.pdf
 
+# CMake
+*debug*
+*release*
