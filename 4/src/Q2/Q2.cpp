@@ -11,11 +11,12 @@
 #include "FIFOAlgorithm.hpp"
 
 constexpr std::size_t PAGE_TABLE_SIZE = 10;
+constexpr std::size_t REFERENCE_STRING_SIZE = 10;
 constexpr std::size_t PHYSICAL_MEMORY_SIZE = 5;
 
 void entryQ2()
 {
-    std::vector<Page> pageTable(10);
+    std::vector<Page> pageTable(PAGE_TABLE_SIZE);
 
     // Initialize pages
     {
@@ -25,8 +26,8 @@ void entryQ2()
         });
     }
 
-    PageReferenceString pageReferenceString(10);
-    pageReferenceString.randomize(0, 9);
+    PageReferenceString pageReferenceString(REFERENCE_STRING_SIZE);
+    pageReferenceString.randomize(0, PAGE_TABLE_SIZE - 1);
 
     std::unique_ptr<AbstractAlgorithm> algorithms[] = {
         std::make_unique<LRUAlgorithm>(pageTable, PHYSICAL_MEMORY_SIZE),
